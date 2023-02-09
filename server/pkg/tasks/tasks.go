@@ -43,6 +43,7 @@ func NewImageResizeTask(src string) (*asynq.Task, error) {
 	if err != nil {
 		return nil, err
 	}
+	log.Printf("NewImageResizeTask: src=%s", src)
 	// task options can be passed to NewTask, which can be overridden at enqueue time.
 	return asynq.NewTask(TypeImageResize, payload, asynq.MaxRetry(5), asynq.Timeout(20*time.Minute)), nil
 }
